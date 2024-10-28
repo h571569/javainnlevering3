@@ -5,32 +5,87 @@ import no.hvl.dat100.oppgave1.*;
 
 public class Tekst extends Innlegg {
 
-	// TODO: objektvariable 
+
+	protected int likes;
+	protected int id;
+	protected String bruker;
+	protected String tekst;
+	protected String dato;
+
+
+	@Override
+	public String getDato() {
+		return dato;
+	}
+
+	@Override
+	public int getId() {
+		return id;
+	}
+
+	@Override
+	public String getBruker() {
+		return bruker;
+	}
+
+	public String getTekst() {
+		return tekst;
+	}
+
+	@Override
+	public int getLikes() {
+		return likes;
+	}
+
+	@Override
+	public void setDato(String dato) {
+		this.dato = dato;
+	}
+
+	public void setTekst(String tekst) {
+		this.tekst = tekst;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public void setBruker(String bruker) {
+		this.bruker = bruker;
+	}
+
+
 	
 	public Tekst () {
 		
 	}
 	
 	public Tekst(int id, String bruker, String dato, String tekst) {
-		throw new UnsupportedOperationException(TODO.constructor("Tekst"));
+		this.id = id;
+		this.bruker = bruker;
+		this.dato = dato;
+		this.tekst = tekst;
 	}
 	
 	public Tekst(int id, String bruker, String dato, int likes, String tekst) {
-		throw new UnsupportedOperationException(TODO.constructor("Tekst"));
+		this.id = id;
+		this.bruker = bruker;
+		this.dato = dato;
+		this.tekst = tekst;
+		this.likes = likes;
 	}
 	
-	public String getTekst() {
-		throw new UnsupportedOperationException(TODO.method());
 
-	}
-
-	public void setTekst(String tekst) {
-		throw new UnsupportedOperationException(TODO.method());
-	}
 
 	@Override
 	public String toString() {
-		throw new UnsupportedOperationException(TODO.method());
+		return "TEKST\n" + this.id + "\n" + this.bruker + "\n" + this.dato + "\n" + this.likes + "\n" + this.tekst  + "\n";
+
 
 	}
 	
