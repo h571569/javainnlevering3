@@ -27,9 +27,9 @@ public class Bilde extends Tekst {
 
 	@Override
 	public String toString() {
-		return "BILDE\n" + super.toString() + this.url +"\n";
+		return "BILDE\n" + this.id + "\n" + this.bruker + "\n" + this.dato + "\n" + this.likes + "\n" + this.tekst + "\n" + this.url + "\n";
 
-
+		//return "BILDE\n" + super.toString() + this.url +"\n";
 	}
 
 	// Metoden nedenfor er kun for valgfri oppgave 6

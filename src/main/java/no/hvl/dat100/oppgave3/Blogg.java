@@ -5,63 +5,113 @@ import no.hvl.dat100.oppgave1.*;
 
 public class Blogg {
 
-	// TODO: objektvariable 
+	public int nesteledig = 0;
+	public Innlegg[] innlegg;
 
 	public Blogg() {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		innlegg = new Innlegg[20];
+		nesteledig = 0;
 	}
 
 	public Blogg(int lengde) {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		innlegg = new Innlegg[lengde];
+		nesteledig = 0;
 	}
 
 	public int getAntall() {
-		throw new UnsupportedOperationException(TODO.method());
+		int antall = 0;
+
+		for (int i = 0; i < innlegg.length; i++) {
+			if (innlegg[i] != null) {
+				antall++;
+			}
+		}
+
+		return antall;
 	}
 	
 	public Innlegg[] getSamling() {
-		throw new UnsupportedOperationException(TODO.method());
-
+		return this.innlegg;
 	}
 	
 	public int finnInnlegg(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
+		int peker;
+
+		for (int i = 0; i < getAntall(); i++) {
+			if (innlegg.getId() == this.innlegg[i].getId()) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	public boolean finnes(Innlegg innlegg) {
-		throw new UnsupportedOperationException(TODO.method());
+        return finnInnlegg(innlegg) >= 0;
 	}
 
 	public boolean ledigPlass() {
-		throw new UnsupportedOperationException(TODO.method());
+		 return getAntall() < this.innlegg.length;
 
 	}
 	
 	public boolean leggTil(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
+		if(ledigPlass() && !finnes(innlegg)) {
+				this.innlegg[nesteledig] = innlegg;
+				nesteledig++;
+				return true;
+		}
+		return false;
 	}
 	
 	public String toString() {
-		throw new UnsupportedOperationException(TODO.method());
+
+		String ut = "";
+
+		for (int i = 0; i < nesteledig; i++) {
+			ut += this.innlegg[i].toString();
+		}
+		return getAntall() + "\n" + ut;
 	}
 
 	// valgfrie oppgaver nedenfor
 	
 	public void utvid() {
-		throw new UnsupportedOperationException(TODO.method());
+		Innlegg[] nyInnlegg = new Innlegg[this.innlegg.length*2];
+
+		for(int i = 0; i < nesteledig; i++) {
+			nyInnlegg[i] = this.innlegg[i];
+		}
+		this.innlegg = nyInnlegg;
 	}
 	
 	public boolean leggTilUtvid(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
-		
+		boolean lagtTil = false;
+
+		if (!finnes(innlegg)) {
+			if (ledigPlass()) {
+				leggTil(innlegg);
+				lagtTil = true;
+			} else {
+				utvid();
+				leggTil(innlegg);
+				lagtTil = true;
+			}
+		}
+		return lagtTil;
 	}
 	
 	public boolean slett(Innlegg innlegg) {
 		
-		throw new UnsupportedOperationException(TODO.method());
+		if(finnes(innlegg)) {
+			this.innlegg[finnInnlegg(innlegg)] = null;
+//			this.innlegg[finnInnlegg(innlegg)] = this.innlegg[nesteledig-1];
+//			this.innlegg[nesteledig-1] = null;
+			return true;
+		}
+		return false;
 	}
 	
 	public int[] search(String keyword) {
