@@ -38,7 +38,7 @@ public class SkrivBlogg {
 
 
 		//METODE 2
-		
+
 		Path folderPath = Paths.get(mappe);
 		Path filePath = Paths.get(filnavn);
 

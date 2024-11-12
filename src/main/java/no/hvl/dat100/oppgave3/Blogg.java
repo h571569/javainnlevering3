@@ -91,15 +91,12 @@ public class Blogg {
 		boolean lagtTil = false;
 
 		if (!finnes(innlegg)) {
-			if (ledigPlass()) {
-				leggTil(innlegg);
-				lagtTil = true;
-			} else {
-				utvid();
-				leggTil(innlegg);
-				lagtTil = true;
-			}
-		}
+            if (!ledigPlass()) {
+                utvid();
+            }
+            leggTil(innlegg);
+            lagtTil = true;
+        }
 		return lagtTil;
 	}
 	
