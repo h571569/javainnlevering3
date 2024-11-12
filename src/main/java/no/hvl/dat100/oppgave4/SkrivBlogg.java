@@ -47,9 +47,10 @@ public class SkrivBlogg {
 
 			try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath.toFile()))) {
 				writer.write(samling.toString());
-				writer.newLine();
+				writer.flush();
 			} catch (IOException e) {
 				e.printStackTrace();
+				return false;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
